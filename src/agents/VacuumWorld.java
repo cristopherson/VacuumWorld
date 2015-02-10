@@ -18,7 +18,7 @@ public class VacuumWorld extends World<Actor> {
 				gridDimension);
 		this.setGrid(newGrid);
 		
-		this.add(this.getRandomEmptyLocation(), new Bug(Color.BLACK));
+		this.add(this.getRandomEmptyLocation(), new Bug(Color.ORANGE));
 
 		for (int i = 0; i < (gridSize) -  1; i++) {
 			int flipCoin = (int)(Math.random() * 2);
@@ -28,10 +28,4 @@ public class VacuumWorld extends World<Actor> {
 		}
 
 	}
-
-	public static void main(String[] args) {
-		VacuumWorld world = new VacuumWorld();
-		world.show();
-	}
-
 }
