@@ -33,9 +33,11 @@ public class VacuumBehavior extends OneShotBehaviour{
 		msgTx.addReceiver(new AID("vacuum", AID.ISLOCALNAME));
 		msgTx.setLanguage("fipa-sl");
 		msgTx.setOntology("vacuum-ontology");
-		vacuum.setDirection(Location.RIGHT);
+//		vacuum.setDirection(Location.RIGHT);
+		facingPredicate.setIsFacing(true);
+		facingPredicate.setVacuum(vacuum);
 		cel.add(facingPredicate);
-		cel.add(turnAction);
+//		cel.add(turnAction);
 		
 		for (String lang:contentManager.getLanguageNames()) {
 			System.out.println("Lang = " + lang);			

@@ -10,20 +10,25 @@ public class Facing implements Predicate{
 	 */
 	private static final long serialVersionUID = 1L;	
 	private VacuumConcept vacuum;
-	private boolean facing;
+	private boolean isfacing;
 	
-	public VacuumConcept getVacuumConcept() {
+	public Facing() {
+		vacuum = new VacuumConcept();
+		isfacing = false;
+	}
+	
+	public VacuumConcept getVacuum() {
 		return vacuum;
 	}
-	public void setVacuumConcept(VacuumConcept vacuum) {
+	public void setVacuum(VacuumConcept vacuum) {
 		this.vacuum = vacuum;
 	}
 	
-	public boolean isFacing() {
-		return facing;
+	public boolean getIsFacing() {
+		return isfacing;
 	}
-	public void setFacing(boolean facing) {
-		this.facing = facing;
+	public void setIsFacing(boolean isFacing) {
+		this.isfacing = isFacing;
 	}
 
 }

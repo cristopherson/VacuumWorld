@@ -52,7 +52,9 @@ public class VacuumWorldOntology extends Ontology {
 		try {
 			add(new ConceptSchema(LOCATION), LocationConcept.class);
 			add(new ConceptSchema(VACUUM), VacuumConcept.class);
-
+			add(new PrimitiveSchema(BasicOntology.BOOLEAN), BasicOntology.BOOLEAN.getClass());
+			add(new PrimitiveSchema(BasicOntology.INTEGER), BasicOntology.INTEGER.getClass());
+			
 			add(new PredicateSchema(DIRT), Dirt.class);
 			add(new PredicateSchema(IN), In.class);
 			add(new PredicateSchema(FACING), Facing.class);
@@ -65,23 +67,23 @@ public class VacuumWorldOntology extends Ontology {
 			vacuumSchema.add(DIRECTION,
 					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
 			
-			ConceptSchema locationSchema = (ConceptSchema) getSchema(LOCATION);
-			locationSchema.add(ROW,
-					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));			
-			locationSchema.add(COL,
-					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
+//			ConceptSchema locationSchema = (ConceptSchema) getSchema(LOCATION);
+//			locationSchema.add(ROW,
+//					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));			
+//			locationSchema.add(COL,
+//					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
 
-			PredicateSchema dirtSchema = (PredicateSchema) getSchema(DIRT);
-			dirtSchema.add(IS_DIRT,
-					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+//			PredicateSchema dirtSchema = (PredicateSchema) getSchema(DIRT);
+//			dirtSchema.add(IS_DIRT,
+//					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 			
-			PredicateSchema inSchema = (PredicateSchema) getSchema(IN);
-			inSchema.add(IS_AT,
-					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+//			PredicateSchema inSchema = (PredicateSchema) getSchema(IN);
+//			inSchema.add(IS_AT,
+//					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 			
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
-			facingSchema.add(IS_FACING,
-					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+			System.out.println("Boolean = " + getSchema(BasicOntology.BOOLEAN));
+			facingSchema.add(IS_FACING, getSchema(BasicOntology.BOOLEAN));
 			facingSchema.add(VACUUM,
 					(ConceptSchema) getSchema(VACUUM));
 
