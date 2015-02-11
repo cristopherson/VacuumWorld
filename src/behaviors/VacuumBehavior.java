@@ -41,16 +41,10 @@ public class VacuumBehavior extends OneShotBehaviour{
 //		facingPredicate.setIsFacing(true);
 		facingPredicate.setVacuum(vacuum);
 		turnAction.setVacuum(vacuum);
-		cel.add(facingPredicate);
+//		cel.add(facingPredicate);
 		Action myAction = new Action(myAgent.getAID(), turnAction);
 		
-//		cel.add(myAction);
-		Iterator it = cel.iterator();
-		while(it.hasNext()) {
-			ContentElement c = (ContentElement)it.next();
-			System.out.println("Content " + c);
-			
-		}
+		cel.add(myAction);
 		
 		try {
 			contentManager.fillContent(msgTx, cel);

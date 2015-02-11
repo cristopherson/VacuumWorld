@@ -50,15 +50,11 @@ public class VacuumWorldOntology extends Ontology {
 	public static final String DIRECTION = "direction";
 
 	private VacuumWorldOntology() {
-		super(ONTOLOGY_NAME, VacuumWorldOntology.getInstance());
+		super(ONTOLOGY_NAME, BasicOntology.getInstance());
 
 		try {
 			add(new ConceptSchema(LOCATION), LocationConcept.class);			
 			add(new ConceptSchema(VACUUM), VacuumConcept.class);
-			
-			add(new PrimitiveSchema(BasicOntology.BOOLEAN), BasicOntology.BOOLEAN.getClass());
-			add(new PrimitiveSchema(BasicOntology.INTEGER), BasicOntology.INTEGER.getClass());
-			add(new PrimitiveSchema(BasicOntology.STRING), BasicOntology.STRING.getClass());			
 			
 			add(new PredicateSchema(DIRT), Dirt.class);
 			add(new PredicateSchema(IN), In.class);

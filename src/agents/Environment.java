@@ -1,6 +1,7 @@
 package agents;
 
 import ontology.VacuumWorldOntology;
+import ontology.action.Turn;
 import jade.content.ContentManager;
 import jade.content.Predicate;
 import jade.content.lang.Codec;
@@ -58,7 +59,9 @@ public class Environment extends Agent{
 					try {
 						contentManager.setValidationMode(false);
 						
-						Predicate action = (Predicate) contentManager.extractContent(msgRx);
+						Action action = (Action) contentManager.extractContent(msgRx);
+						Turn turnAction = (Turn)action.getAction();
+						System.out.println("Info " + turnAction.getVacuum().getDirection());
 					} catch (UngroundedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
