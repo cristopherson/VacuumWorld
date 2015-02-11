@@ -30,7 +30,7 @@ public class VacuumBehavior extends OneShotBehaviour{
 		Facing facingPredicate = new Facing();
 		Turn turnAction = new Turn();
 		
-		msgTx.addReceiver(new AID("vacuum", AID.ISLOCALNAME));
+		msgTx.addReceiver(new AID("env", AID.ISLOCALNAME));
 		msgTx.setLanguage("fipa-sl");
 		msgTx.setOntology("vacuum-ontology");
 //		vacuum.setDirection(Location.RIGHT);

@@ -82,7 +82,6 @@ public class VacuumWorldOntology extends Ontology {
 //					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 			
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
-			System.out.println("Boolean = " + getSchema(BasicOntology.BOOLEAN));
 			facingSchema.add(IS_FACING, getSchema(BasicOntology.BOOLEAN));
 			facingSchema.add(VACUUM,
 					(ConceptSchema) getSchema(VACUUM));
