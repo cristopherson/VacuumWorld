@@ -1,5 +1,6 @@
 package ontology.predicate;
 
+import ontology.concept.VacuumConcept;
 import jade.content.Predicate;
 
 public class Facing implements Predicate{
@@ -8,14 +9,14 @@ public class Facing implements Predicate{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;	
-	private int direction;
+	private VacuumConcept vacuum;
 	private boolean facing;
 	
-	public int getDirection() {
-		return direction;
+	public VacuumConcept getVacuumConcept() {
+		return vacuum;
 	}
-	public void setDirection(int direction) {
-		this.direction = direction;
+	public void setVacuumConcept(VacuumConcept vacuum) {
+		this.vacuum = vacuum;
 	}
 	
 	public boolean isFacing() {

@@ -35,7 +35,7 @@ public class VacuumWorldOntology extends Ontology {
 	public static final String LOCATION = "location";
 	public static final String DIRT = "dirt";
 	public static final String IS_DIRT = "isdirt";
-	public static final String FACING = "facing";
+	public static final String FACING = "Facing";
 	public static final String IS_FACING = "isfacing";
 	public static final String IN = "in";
 	public static final String IS_AT = "isat";
@@ -82,15 +82,17 @@ public class VacuumWorldOntology extends Ontology {
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
 			facingSchema.add(IS_FACING,
 					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+			facingSchema.add(VACUUM,
+					(ConceptSchema) getSchema(VACUUM));
 
-			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
-			forwardSchema.add(FORWARD, (ConceptSchema)getSchema(VACUUM));
-			
-			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
-			suckSchema.add(SUCK, (ConceptSchema)getSchema(LOCATION));
+//			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
+//			forwardSchema.add(FORWARD, (ConceptSchema)getSchema(VACUUM));
+//			
+//			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
+//			suckSchema.add(SUCK, (ConceptSchema)getSchema(LOCATION));
 			
 			AgentActionSchema turnSchema = (AgentActionSchema) getSchema(TURN);
-			turnSchema.add(TURN, (ConceptSchema)getSchema(VACUUM));
+			turnSchema.add(VACUUM, (ConceptSchema)getSchema(VACUUM));
 
 		} catch (OntologyException e) {
 			// TODO Auto-generated catch block

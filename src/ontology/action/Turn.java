@@ -1,7 +1,6 @@
 package ontology.action;
 
-import utilities.Direction;
-import info.gridworld.grid.Location;
+import ontology.concept.VacuumConcept;
 import jade.content.AgentAction;
 
 public class Turn implements AgentAction{
@@ -10,21 +9,13 @@ public class Turn implements AgentAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Location location;
-	private Direction direction;
-	
-	public Location getLocation() {
-		return location;
+	private VacuumConcept vacuum;
+	public VacuumConcept getVacuum() {
+		return vacuum;
 	}
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setVacuum(VacuumConcept vacuum) {
+		this.vacuum = vacuum;
 	}
 	
-	public Direction getDirection() {
-		return direction;
-	}
-	public void setDirection(Direction direction) {
-		this.direction = direction;
-	}
 
 }
