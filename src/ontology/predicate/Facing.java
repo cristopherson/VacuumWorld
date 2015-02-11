@@ -10,7 +10,7 @@ public class Facing implements Predicate{
 	 */
 	private static final long serialVersionUID = 1L;	
 	private VacuumConcept vacuum;
-	private boolean isfacing;
+	private Boolean isfacing;
 	
 	public Facing() {
 		vacuum = new VacuumConcept();
@@ -24,10 +24,10 @@ public class Facing implements Predicate{
 		this.vacuum = vacuum;
 	}
 	
-	public boolean getIsFacing() {
+	public Boolean getIsFacing() {
 		return isfacing;
 	}
-	public void setIsFacing(boolean isFacing) {
+	public void setIsFacing(Boolean isFacing) {
 		this.isfacing = isFacing;
 	}
 

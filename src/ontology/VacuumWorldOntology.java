@@ -15,6 +15,8 @@ import jade.content.schema.AgentActionSchema;
 import jade.content.schema.ConceptSchema;
 import jade.content.schema.PredicateSchema;
 import jade.content.schema.PrimitiveSchema;
+import jade.content.onto.basic.Action;
+import jade.core.AID;
 
 public class VacuumWorldOntology extends Ontology {
 	/**
@@ -32,6 +34,7 @@ public class VacuumWorldOntology extends Ontology {
 
 	// Vocabulary
 	public static final String VACUUM = "vacuum";
+	public static final String ACTION = "action";
 	public static final String LOCATION = "location";
 	public static final String DIRT = "dirt";
 	public static final String IS_DIRT = "isdirt";
@@ -50,10 +53,12 @@ public class VacuumWorldOntology extends Ontology {
 		super(ONTOLOGY_NAME, VacuumWorldOntology.getInstance());
 
 		try {
-			add(new ConceptSchema(LOCATION), LocationConcept.class);
+			add(new ConceptSchema(LOCATION), LocationConcept.class);			
 			add(new ConceptSchema(VACUUM), VacuumConcept.class);
+			
 			add(new PrimitiveSchema(BasicOntology.BOOLEAN), BasicOntology.BOOLEAN.getClass());
 			add(new PrimitiveSchema(BasicOntology.INTEGER), BasicOntology.INTEGER.getClass());
+			add(new PrimitiveSchema(BasicOntology.STRING), BasicOntology.STRING.getClass());			
 			
 			add(new PredicateSchema(DIRT), Dirt.class);
 			add(new PredicateSchema(IN), In.class);
@@ -62,7 +67,7 @@ public class VacuumWorldOntology extends Ontology {
 			add(new AgentActionSchema(FORWARD), Forward.class);
 			add(new AgentActionSchema(SUCK), Suck.class);
 			add(new AgentActionSchema(TURN), Turn.class);
-
+			
 			ConceptSchema vacuumSchema = (ConceptSchema) getSchema(VACUUM);
 			vacuumSchema.add(DIRECTION,
 					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
@@ -82,7 +87,7 @@ public class VacuumWorldOntology extends Ontology {
 //					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 			
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
-			facingSchema.add(IS_FACING, getSchema(BasicOntology.BOOLEAN));
+			facingSchema.add(IS_FACING, (PrimitiveSchema)getSchema(BasicOntology.BOOLEAN));
 			facingSchema.add(VACUUM,
 					(ConceptSchema) getSchema(VACUUM));
 
@@ -94,7 +99,9 @@ public class VacuumWorldOntology extends Ontology {
 			
 			AgentActionSchema turnSchema = (AgentActionSchema) getSchema(TURN);
 			turnSchema.add(VACUUM, (ConceptSchema)getSchema(VACUUM));
-
+			
+			
+			
 		} catch (OntologyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package agents;
 
 import ontology.VacuumWorldOntology;
 import jade.content.ContentManager;
+import jade.content.Predicate;
 import jade.content.lang.Codec;
 import jade.content.lang.Codec.CodecException;
 import jade.content.lang.sl.SLCodec;
@@ -44,24 +45,30 @@ public class Environment extends Agent{
 			public void action() {
 				// TODO Auto-generated method stub
 				
+				
 				ACLMessage msgRx = receive();
 				if (msgRx != null) {					
 					System.out.println(msgRx.getContent());
 					// Message received. Process it
-					ACLMessage reply = msgRx.createReply();
+					
+					msgRx.setLanguage("fipa-sl");
+					msgRx.setOntology("vacuum-ontology");
+					
 					ContentManager contentManager = myAgent.getContentManager();					
-//					try {
-//						Action action = (Action) contentManager.extractContent(msgRx);
-//					} catch (UngroundedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (CodecException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (OntologyException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+					try {
+						contentManager.setValidationMode(false);
+						
+						Predicate action = (Predicate) contentManager.extractContent(msgRx);
+					} catch (UngroundedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (CodecException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (OntologyException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 				} else {
 					block();

@@ -11,6 +11,11 @@ public class LocationConcept implements Concept{
 	private int row;
 	private int col;
 	
+	public LocationConcept() {
+		row = 0;
+		col = 0;		
+	}
+	
 	public int getRow() {
 		return row;
 	}

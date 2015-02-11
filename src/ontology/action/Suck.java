@@ -11,6 +11,10 @@ public class Suck implements AgentAction{
 	private static final long serialVersionUID = 1L;
 	private Location location;
 	
+	public Suck() {
+		location = new Location(0,0);
+	}
+	
 	public Location getLocation() {
 		return location;
 	}

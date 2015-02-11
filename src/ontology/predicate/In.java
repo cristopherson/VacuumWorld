@@ -12,6 +12,12 @@ public class In implements Predicate{
 	private int col;
 	private boolean at;
 	
+	public In() {
+		row = 0;
+		col = 0;
+		at = false;
+	}
+	
 	public int getRow() {
 		return row;
 	}

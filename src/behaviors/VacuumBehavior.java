@@ -1,13 +1,17 @@
 package behaviors;
 
+import java.util.Iterator;
+
 import info.gridworld.grid.Location;
 import ontology.action.Turn;
 import ontology.concept.VacuumConcept;
 import ontology.predicate.Facing;
+import jade.content.ContentElement;
 import jade.content.ContentElementList;
 import jade.content.ContentManager;
 import jade.content.lang.Codec.CodecException;
 import jade.content.onto.OntologyException;
+import jade.content.onto.basic.Action;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
@@ -25,7 +29,7 @@ public class VacuumBehavior extends OneShotBehaviour{
 		// TODO Auto-generated method stub
 		ContentManager contentManager = myAgent.getContentManager();
 		ContentElementList cel = new ContentElementList();
-		ACLMessage msgTx = new ACLMessage(ACLMessage.PROPOSE);
+		ACLMessage msgTx = new ACLMessage(ACLMessage.REQUEST);
 		VacuumConcept vacuum = new VacuumConcept();
 		Facing facingPredicate = new Facing();
 		Turn turnAction = new Turn();
@@ -33,18 +37,24 @@ public class VacuumBehavior extends OneShotBehaviour{
 		msgTx.addReceiver(new AID("env", AID.ISLOCALNAME));
 		msgTx.setLanguage("fipa-sl");
 		msgTx.setOntology("vacuum-ontology");
-//		vacuum.setDirection(Location.RIGHT);
-		facingPredicate.setIsFacing(true);
+		vacuum.setDirection(Location.RIGHT);
+//		facingPredicate.setIsFacing(true);
 		facingPredicate.setVacuum(vacuum);
+		turnAction.setVacuum(vacuum);
 		cel.add(facingPredicate);
-//		cel.add(turnAction);
+		Action myAction = new Action(myAgent.getAID(), turnAction);
 		
-		for (String lang:contentManager.getLanguageNames()) {
-			System.out.println("Lang = " + lang);			
+//		cel.add(myAction);
+		Iterator it = cel.iterator();
+		while(it.hasNext()) {
+			ContentElement c = (ContentElement)it.next();
+			System.out.println("Content " + c);
+			
 		}
-		System.out.println("Ontology ");
+		
 		try {
 			contentManager.fillContent(msgTx, cel);
+			System.out.println("MSG " + msgTx);
 		} catch (CodecException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

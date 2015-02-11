@@ -12,6 +12,12 @@ public class Dirt implements Predicate{
 	private int row;
 	private boolean dirt;
 	
+	public Dirt() {
+		col = 0;
+		row = 0;
+		dirt = false;
+	}
+	
 	public boolean isDirt() {
 		return dirt;
 	}

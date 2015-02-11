@@ -11,6 +11,10 @@ public class Forward implements AgentAction{
 	private static final long serialVersionUID = 1L;
 	private Location location;
 	
+	public Forward() {
+		location = new Location(0,0);
+	}
+	
 	public Location getLocation() {
 		return location;
 	}
