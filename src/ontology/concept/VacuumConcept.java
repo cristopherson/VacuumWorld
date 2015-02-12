@@ -18,7 +18,7 @@ public class VacuumConcept implements Concept{
 		return direction;
 	}
 	
-	public void setDirection(int direction) {
+	public void setDirection(int direction) {		
 		this.direction = direction;
 	}
 }

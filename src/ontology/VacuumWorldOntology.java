@@ -62,6 +62,7 @@ public class VacuumWorldOntology extends Ontology {
 			add(new AgentActionSchema(SUCK), Suck.class);
 			add(new AgentActionSchema(TURN), Turn.class);
 
+			/**************** Concepts ******************/
 			ConceptSchema vacuumSchema = (ConceptSchema) getSchema(VACUUM);
 			vacuumSchema.add(DIRECTION,
 					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
@@ -72,29 +73,27 @@ public class VacuumWorldOntology extends Ontology {
 			locationSchema.add(COL,
 					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
 
+			/**************** Predicates ******************/
 			PredicateSchema dirtSchema = (PredicateSchema) getSchema(DIRT);
-			dirtSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
 			dirtSchema.add(IS_DIRT,
 					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 
 			PredicateSchema inSchema = (PredicateSchema) getSchema(IN);
 			inSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
-			inSchema.add(IS_AT,
-					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
 
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
-			facingSchema.add(IS_FACING,
-					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
-			facingSchema.add(VACUUM, (ConceptSchema) getSchema(VACUUM));
+			facingSchema.add(DIRECTION,
+					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
 
-			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
-			forwardSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
-
-			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
-			suckSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
-
-			AgentActionSchema turnSchema = (AgentActionSchema) getSchema(TURN);
-			turnSchema.add(VACUUM, (ConceptSchema) getSchema(VACUUM));
+			/**************** Actions ******************/
+//			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
+//			forwardSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+//
+//			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
+//			suckSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+//
+//			AgentActionSchema turnSchema = (AgentActionSchema) getSchema(TURN);
+//			turnSchema.add(VACUUM, (ConceptSchema) getSchema(VACUUM));
 
 		} catch (OntologyException e) {
 			// TODO Auto-generated catch block

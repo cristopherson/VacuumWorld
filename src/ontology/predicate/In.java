@@ -10,27 +10,25 @@ public class In implements Predicate{
 	 */
 	private static final long serialVersionUID = 1L;
 	private LocationConcept location;
-	private boolean isAt;
+	
+	public In(LocationConcept location) {
+		this.location = location;
+	}
+	
+	public In(int row, int col) {
+		this(new LocationConcept(row, col));
+	}
 	
 	public In() {
-		location = new LocationConcept();
-		isAt = false;
+		this(new LocationConcept());
 	}
 	
 	public LocationConcept getLocation() {
 		return location;
 	}
 	
-	public void setCol(LocationConcept location) {
+	public void setLocation(LocationConcept location) {
 		this.location = location;
 	}
 	
-	public boolean getIsAt() {
-		return isAt;
-	}
-	
-	public void setIsAt(boolean isAt) {
-		this.isAt  = isAt;
-	}
-
 }

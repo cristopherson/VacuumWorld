@@ -1,6 +1,6 @@
 package ontology.predicate;
 
-import ontology.concept.VacuumConcept;
+import info.gridworld.grid.Location;
 import jade.content.Predicate;
 
 public class Facing implements Predicate{
@@ -9,26 +9,21 @@ public class Facing implements Predicate{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;	
-	private VacuumConcept vacuum;
-	private Boolean isfacing;
+	private int direction;
 	
-	public Facing() {
-		vacuum = new VacuumConcept();
-		isfacing = false;
+	public Facing()  {
+		this(Location.NORTH);
 	}
 	
-	public VacuumConcept getVacuum() {
-		return vacuum;
-	}
-	public void setVacuum(VacuumConcept vacuum) {
-		this.vacuum = vacuum;
+	public Facing(int direction) {
+		this.direction = direction;		
 	}
 	
-	public Boolean getIsFacing() {
-		return isfacing;
+	public int getDirection() {
+		return direction;
 	}
-	public void setIsFacing(Boolean isFacing) {
-		this.isfacing = isFacing;
+	public void setDirection(int direction) {
+		this.direction = direction;
 	}
 
 }

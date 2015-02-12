@@ -1,5 +1,6 @@
 package ontology.concept;
 
+import info.gridworld.grid.Location;
 import jade.content.Concept;
 
 public class LocationConcept implements Concept {
@@ -15,7 +16,10 @@ public class LocationConcept implements Concept {
 		this(0, 0);
 	}
 
-	public LocationConcept(int col, int row) {
+	public LocationConcept(Location location) {
+		this(location.getRow(), location.getCol());
+	}
+	public LocationConcept(int row, int col) {
 		this.row = row;
 		this.col = col;
 	}
