@@ -1,7 +1,12 @@
 package agents;
 
+import java.util.Iterator;
+
 import ontology.VacuumWorldOntology;
 import ontology.action.Turn;
+import ontology.predicate.Facing;
+import jade.content.ContentElement;
+import jade.content.ContentElementList;
 import jade.content.ContentManager;
 import jade.content.Predicate;
 import jade.content.lang.Codec;
@@ -13,6 +18,7 @@ import jade.content.onto.UngroundedException;
 import jade.content.onto.basic.Action;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.FIPANames.ContentLanguage;
 import jade.lang.acl.ACLMessage;
 
 public class Environment extends Agent{
@@ -44,8 +50,7 @@ public class Environment extends Agent{
 
 			@Override
 			public void action() {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 				
 				ACLMessage msgRx = receive();
 				if (msgRx != null) {					
@@ -57,11 +62,22 @@ public class Environment extends Agent{
 					
 					ContentManager contentManager = myAgent.getContentManager();					
 					try {
-						contentManager.setValidationMode(false);
+						ContentElementList elementList = (ContentElementList) contentManager.extractContent(msgRx);
+						Iterator<ContentElement> element = elementList.iterator();						
 						
-						Action action = (Action) contentManager.extractContent(msgRx);
-						Turn turnAction = (Turn)action.getAction();
-						System.out.println("Info " + turnAction.getVacuum().getDirection());
+						while(element.hasNext()) {
+							ContentElement contentElement = element.next();
+							
+							if(contentElement.getClass() == Action.class) {
+								Action action = (Action)contentElement;
+								Turn turnAction = (Turn)action.getAction();
+								System.out.println("Info " + turnAction.getVacuum().getDirection());		
+							} else if (contentElement.getClass() == Facing.class){
+								Facing facingPredicate = (Facing) contentElement;								
+								System.out.println("Info " + facingPredicate.getIsFacing());
+							}
+						}
+						
 					} catch (UngroundedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

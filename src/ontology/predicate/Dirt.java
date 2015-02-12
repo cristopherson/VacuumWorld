@@ -1,5 +1,6 @@
 package ontology.predicate;
 
+import ontology.concept.LocationConcept;
 import jade.content.Predicate;
 
 public class Dirt implements Predicate{
@@ -8,38 +9,27 @@ public class Dirt implements Predicate{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int col;
-	private int row;
-	private boolean dirt;
+	private LocationConcept location;
+	private boolean isDirt;
 	
 	public Dirt() {
-		col = 0;
-		row = 0;
-		dirt = false;
+		location = new LocationConcept(0,0);
+		isDirt = false;
 	}
 	
-	public boolean isDirt() {
-		return dirt;
+	public boolean getIsDirt() {
+		return isDirt;
 	}
 	
-	public void setDirt(boolean dirt) {
-		this.dirt = dirt;
+	public void setDirt(boolean isDirt) {
+		this.isDirt = isDirt;
 	}
 	
-	public int getRow() {
-		return row;
+	public LocationConcept getLocation() {
+		return location;
 	}
 	
-	public void setRow(int row) {
-		this.row= row;
+	public void setLocation(LocationConcept location) {
+		this.location = location;
 	}
-
-	public int getCol() {
-		return col;
-	}
-	
-	public void setCol(int col) {
-		this.col = col;
-	}
-
 }

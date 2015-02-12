@@ -1,5 +1,6 @@
 package ontology.predicate;
 
+import ontology.concept.LocationConcept;
 import jade.content.Predicate;
 
 public class In implements Predicate{
@@ -8,38 +9,28 @@ public class In implements Predicate{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int row;
-	private int col;
-	private boolean at;
+	private LocationConcept location;
+	private boolean isAt;
 	
 	public In() {
-		row = 0;
-		col = 0;
-		at = false;
+		location = new LocationConcept();
+		isAt = false;
 	}
 	
-	public int getRow() {
-		return row;
+	public LocationConcept getLocation() {
+		return location;
 	}
 	
-	public void setRow(int row) {
-		this.row= row;
-	} 
-
-	public int getCol() {
-		return col;
+	public void setCol(LocationConcept location) {
+		this.location = location;
 	}
 	
-	public void setCol(int col) {
-		this.col = col;
+	public boolean getIsAt() {
+		return isAt;
 	}
 	
-	public boolean isAt() {
-		return at;
-	}
-	
-	public void setAt(boolean at) {
-		this.at  = at;
+	public void setIsAt(boolean isAt) {
+		this.isAt  = isAt;
 	}
 
 }

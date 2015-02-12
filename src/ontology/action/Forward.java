@@ -1,6 +1,6 @@
 package ontology.action;
 
-import info.gridworld.grid.Location;
+import ontology.concept.LocationConcept;
 import jade.content.AgentAction;
 
 public class Forward implements AgentAction{
@@ -9,16 +9,16 @@ public class Forward implements AgentAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Location location;
+	private LocationConcept location;
 	
 	public Forward() {
-		location = new Location(0,0);
+		location = new LocationConcept();
 	}
 	
-	public Location getLocation() {
+	public LocationConcept getLocation() {
 		return location;
 	}
-	public void setLocation(Location location) {
+	public void setLocation(LocationConcept location) {
 		this.location = location;
 	}
 

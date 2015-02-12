@@ -15,8 +15,6 @@ import jade.content.schema.AgentActionSchema;
 import jade.content.schema.ConceptSchema;
 import jade.content.schema.PredicateSchema;
 import jade.content.schema.PrimitiveSchema;
-import jade.content.onto.basic.Action;
-import jade.core.AID;
 
 public class VacuumWorldOntology extends Ontology {
 	/**
@@ -53,9 +51,9 @@ public class VacuumWorldOntology extends Ontology {
 		super(ONTOLOGY_NAME, BasicOntology.getInstance());
 
 		try {
-			add(new ConceptSchema(LOCATION), LocationConcept.class);			
+			add(new ConceptSchema(LOCATION), LocationConcept.class);
 			add(new ConceptSchema(VACUUM), VacuumConcept.class);
-			
+
 			add(new PredicateSchema(DIRT), Dirt.class);
 			add(new PredicateSchema(IN), In.class);
 			add(new PredicateSchema(FACING), Facing.class);
@@ -63,41 +61,41 @@ public class VacuumWorldOntology extends Ontology {
 			add(new AgentActionSchema(FORWARD), Forward.class);
 			add(new AgentActionSchema(SUCK), Suck.class);
 			add(new AgentActionSchema(TURN), Turn.class);
-			
+
 			ConceptSchema vacuumSchema = (ConceptSchema) getSchema(VACUUM);
 			vacuumSchema.add(DIRECTION,
 					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
-			
-//			ConceptSchema locationSchema = (ConceptSchema) getSchema(LOCATION);
-//			locationSchema.add(ROW,
-//					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));			
-//			locationSchema.add(COL,
-//					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
 
-//			PredicateSchema dirtSchema = (PredicateSchema) getSchema(DIRT);
-//			dirtSchema.add(IS_DIRT,
-//					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
-			
-//			PredicateSchema inSchema = (PredicateSchema) getSchema(IN);
-//			inSchema.add(IS_AT,
-//					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
-			
+			ConceptSchema locationSchema = (ConceptSchema) getSchema(LOCATION);
+			locationSchema.add(ROW,
+					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
+			locationSchema.add(COL,
+					(PrimitiveSchema) getSchema(BasicOntology.INTEGER));
+
+			PredicateSchema dirtSchema = (PredicateSchema) getSchema(DIRT);
+			dirtSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+			dirtSchema.add(IS_DIRT,
+					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+
+			PredicateSchema inSchema = (PredicateSchema) getSchema(IN);
+			inSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+			inSchema.add(IS_AT,
+					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+
 			PredicateSchema facingSchema = (PredicateSchema) getSchema(FACING);
-			facingSchema.add(IS_FACING, (PrimitiveSchema)getSchema(BasicOntology.BOOLEAN));
-			facingSchema.add(VACUUM,
-					(ConceptSchema) getSchema(VACUUM));
+			facingSchema.add(IS_FACING,
+					(PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+			facingSchema.add(VACUUM, (ConceptSchema) getSchema(VACUUM));
 
-//			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
-//			forwardSchema.add(FORWARD, (ConceptSchema)getSchema(VACUUM));
-//			
-//			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
-//			suckSchema.add(SUCK, (ConceptSchema)getSchema(LOCATION));
-			
+			AgentActionSchema forwardSchema = (AgentActionSchema) getSchema(FORWARD);
+			forwardSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+
+			AgentActionSchema suckSchema = (AgentActionSchema) getSchema(SUCK);
+			suckSchema.add(LOCATION, (ConceptSchema) getSchema(LOCATION));
+
 			AgentActionSchema turnSchema = (AgentActionSchema) getSchema(TURN);
-			turnSchema.add(VACUUM, (ConceptSchema)getSchema(VACUUM));
-			
-			
-			
+			turnSchema.add(VACUUM, (ConceptSchema) getSchema(VACUUM));
+
 		} catch (OntologyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

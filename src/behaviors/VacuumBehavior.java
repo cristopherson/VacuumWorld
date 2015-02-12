@@ -1,19 +1,15 @@
 package behaviors;
 
-import java.util.Iterator;
-
 import info.gridworld.grid.Location;
 import ontology.action.Turn;
 import ontology.concept.VacuumConcept;
 import ontology.predicate.Facing;
-import jade.content.ContentElement;
 import jade.content.ContentElementList;
 import jade.content.ContentManager;
 import jade.content.lang.Codec.CodecException;
 import jade.content.onto.OntologyException;
 import jade.content.onto.basic.Action;
 import jade.core.AID;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 
@@ -33,18 +29,19 @@ public class VacuumBehavior extends OneShotBehaviour{
 		VacuumConcept vacuum = new VacuumConcept();
 		Facing facingPredicate = new Facing();
 		Turn turnAction = new Turn();
+		Action myAction = new Action(myAgent.getAID(), turnAction);
 		
 		msgTx.addReceiver(new AID("env", AID.ISLOCALNAME));
 		msgTx.setLanguage("fipa-sl");
 		msgTx.setOntology("vacuum-ontology");
 		vacuum.setDirection(Location.RIGHT);
-//		facingPredicate.setIsFacing(true);
+		facingPredicate.setIsFacing(true);
 		facingPredicate.setVacuum(vacuum);
 		turnAction.setVacuum(vacuum);
-//		cel.add(facingPredicate);
-		Action myAction = new Action(myAgent.getAID(), turnAction);
 		
 		cel.add(myAction);
+		cel.add(facingPredicate);				
+		
 		
 		try {
 			contentManager.fillContent(msgTx, cel);

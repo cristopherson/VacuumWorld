@@ -2,7 +2,6 @@ package ontology.action;
 
 import ontology.concept.VacuumConcept;
 import jade.content.AgentAction;
-import jade.content.onto.basic.Action;
 
 public class Turn implements AgentAction{
 
